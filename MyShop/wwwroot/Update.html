@@ -12,7 +12,9 @@
         <h2>Update</h2>
         <input type="email" placeholder="User Email" id="userName" />
         <br />
-        <input type="password" placeholder="Password" id="password" />
+        <input onblur="checkPassword()" type="password" placeholder="Password" id="password" />
+        <br />
+        <progress id="score" value="0" max="5"></progress>
         <br />
         <input type="text" placeholder="First Name" id="firstName" />
         <br />

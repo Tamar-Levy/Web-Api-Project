@@ -24,7 +24,9 @@ const updateUser = async () => {
             },
             body: JSON.stringify(user)
         });
-        if (responsePost.status == 204) {
+        if (responsePost.status === 204)
+            alert("Weak password")
+        if (responsePost.status == 400) {
             alert("User not found!")
         }
         else if (!responsePost.ok) {
@@ -35,6 +37,26 @@ const updateUser = async () => {
             sessionStorage.setItem('user', JSON.stringify(data))
             alert(`${data.userName} updated`);
         }
+    }
+    catch (error) {
+        throw error;
+    }
+}
+
+const checkPassword = async () => {
+    const password = document.querySelector("#password").value;
+    const score = document.querySelector("#score");
+    try {
+        const response = await fetch('api/users/password', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(password)
+        });
+        const data = await response.json();
+        score.value = data;
+        console.log(score.value);
     }
     catch (error) {
         throw error;

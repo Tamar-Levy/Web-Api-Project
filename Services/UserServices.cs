@@ -27,6 +27,13 @@ public class UserServices : IUserServices
     }
     public User UpdateUser(int id, User user)
     {
+        var result = CheckPassword(user.Password);
+        if (result < 2)
+        {
+            User tmpUser = new();
+            tmpUser.FirstName = "Weak password";
+            return tmpUser;
+        }
         return _userRepository.UpdateUser(id, user);
     }
     public int CheckPassword(string password)

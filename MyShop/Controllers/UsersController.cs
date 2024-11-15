@@ -32,13 +32,12 @@ namespace MyShop.Controllers
 
         // POST api/<UsersController>
         [HttpPost]
-        
-
+        [Route("login")]
         public ActionResult<User> Login([FromQuery] string userName , [FromQuery] string password)
         {
             User user= _userServices.LoginUser(userName, password);
-            if(user!=null)
-                   return Ok(user);
+            if (user != null) { 
+                   return Ok(user);}
              return BadRequest();
 
 
@@ -72,7 +71,13 @@ namespace MyShop.Controllers
         {
             User userUpdate = _userServices.UpdateUser(id,userToUpdate);
             if (userUpdate != null)
+            {
+                if (userUpdate.FirstName == "Weak password")
+                {
+                    return NoContent();
+                }
                 return Ok(userUpdate);
+            }
             return BadRequest();
         }
 
