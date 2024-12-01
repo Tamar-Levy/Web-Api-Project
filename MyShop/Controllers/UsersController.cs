@@ -33,9 +33,9 @@ namespace MyShop.Controllers
         // POST api/<UsersController>
         [HttpPost]
         [Route("login")]
-        public ActionResult<User> Login([FromQuery] string userName , [FromQuery] string password)
+        public async Task<ActionResult<User>> Login([FromQuery] string userName , [FromQuery] string password)
         {
-            User user= _userServices.LoginUser(userName, password);
+            User user=await _userServices.LoginUser(userName, password);
             if (user != null) { 
                    return Ok(user);}
              return BadRequest();
@@ -44,9 +44,9 @@ namespace MyShop.Controllers
         }
 
         [HttpPost]
-        public ActionResult<User> Register([FromBody] User user)
+        public async Task<ActionResult<User>> Register([FromBody] User user)
         {
-            User userRegister = _userServices.RegisterUser(user);
+            User userRegister =await _userServices.RegisterUser(user);
             if (userRegister != null)
             {
                 if(userRegister.FirstName== "Weak password")
@@ -67,9 +67,9 @@ namespace MyShop.Controllers
 
         // PUT api/<UsersController>/5
         [HttpPut("{id}")]
-        public ActionResult<User> Put(int id, [FromBody] User userToUpdate)
+        public async Task<ActionResult<User>> Put(int id, [FromBody] User userToUpdate)
         {
-            User userUpdate = _userServices.UpdateUser(id,userToUpdate);
+            User userUpdate =await _userServices.UpdateUser(id,userToUpdate);
             if (userUpdate != null)
             {
                 if (userUpdate.FirstName == "Weak password")

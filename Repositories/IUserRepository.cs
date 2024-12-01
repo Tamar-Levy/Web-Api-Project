@@ -6,8 +6,8 @@ namespace Repositories
     {
         IEnumerable<string> Get();
         string GetById(int id);
-        User LoginUser(string userName, string password);
-        User Register(User user);
-        User UpdateUser(int id, User userToUpdate);
+        Task<User> LoginUser(string userName, string password);
+        Task<User> Register(User user);
+        Task<User> UpdateUser(int id, User userToUpdate);
     }
 }

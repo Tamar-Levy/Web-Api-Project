@@ -17,7 +17,7 @@ const getDataFromForm = () => {
 const updateUser = async () => {
     const user = getDataFromForm();
     try {
-        const responsePost = await fetch(`api/users/${JSON.parse(sessionStorage.getItem('user')).userId}`, {
+        const responsePost = await fetch(`api/users/${JSON.parse(sessionStorage.getItem('user')).id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
