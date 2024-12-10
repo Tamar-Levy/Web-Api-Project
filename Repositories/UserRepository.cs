@@ -29,7 +29,7 @@ public class UserRepository : IUserRepository
     public async Task<User> LoginUser(string userName, string password)
     {
         User userFound= await _context.Users.FirstOrDefaultAsync(user => user.UserName == userName && user.Password == password);
-        if (userFound != null)
+        if (userFound != null)//תחזירי אותו בכל מקרה, אם הוא נאל יחזור לך נאל
             return userFound;
         return null;
     }
