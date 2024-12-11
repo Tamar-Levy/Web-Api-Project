@@ -20,7 +20,7 @@ namespace Repositories
         //Get
         public async Task<IEnumerable<Category>> Get()
         {
-            return await _context.Categories.ToListAsync();
+            return await _context.Categories.Include(c=>c.Products).ToListAsync();
         }
 
         // GetById

@@ -2,6 +2,8 @@
 using System.Text.Json;
 using Entities;
 using Services;
+using DTO;
+using AutoMapper;
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace MyShop.Controllers
@@ -11,17 +13,20 @@ namespace MyShop.Controllers
     public class UsersController : ControllerBase
     {
         IUserService _userServices;
+        IMapper _mapper;
 
-        public UsersController(IUserService userServices)
+        public UsersController(IUserService userServices, IMapper mapper)
         {
             _userServices = userServices;
+            _mapper = mapper;
         }
 
         // GET api/<UsersController>/5
         [HttpGet("{id}")]
-        public async Task<User> Get(int id)
+        public async Task<UserDTO> Get(int id)
         {
-            return await _userServices.GetById(id);
+            User user = await _userServices.GetById(id);
+            return _mapper.Map<User, UserDTO>(user);
         }
 
         // POST api/<UsersController>

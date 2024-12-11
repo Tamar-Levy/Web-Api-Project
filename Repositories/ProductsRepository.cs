@@ -20,10 +20,12 @@ namespace Repositories
         //Get
         public async Task<IEnumerable<Product>> Get()
         {
-            return await _context.Products.ToListAsync();
+            return await _context.Products.Include(p => p.Category).ToListAsync();
         }
+
         public async Task<Product> AddProduct(Product product)
         {
+
             await _context.Products.AddAsync(product);
             await _context.SaveChangesAsync();
             return product;

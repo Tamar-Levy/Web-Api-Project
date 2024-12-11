@@ -16,7 +16,7 @@ public class UsersRepository : IUsersRepository
     // GetById
     public async Task<User> GetById(int id)
     {
-        return await _context.Users.FirstOrDefaultAsync(user => user.UserId == id);
+        return await _context.Users.Include(u => u.Orders).FirstOrDefaultAsync(user => user.UserId == id);
     }
 
     //Login
