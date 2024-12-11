@@ -10,25 +10,19 @@ namespace MyShop.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        IUserServices _userServices;
+        IUserService _userServices;
 
-        public UsersController(IUserServices userServices)
+        public UsersController(IUserService userServices)
         {
             _userServices = userServices;
         }
-        // GET: api/<UsersController>
-        [HttpGet]
-        //public IEnumerable<string> Get()
-        //{
-        //    return 
-        //}
 
-        //// GET api/<UsersController>/5
-        //[HttpGet("{id}")]
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
+        // GET api/<UsersController>/5
+        [HttpGet("{id}")]
+        public async Task<User> Get(int id)
+        {
+            return await _userServices.GetById(id);
+        }
 
         // POST api/<UsersController>
         [HttpPost]
@@ -39,8 +33,6 @@ namespace MyShop.Controllers
             if (user != null) { 
                    return Ok(user);}
              return BadRequest();
-
-
         }
 
         [HttpPost]
@@ -81,10 +73,10 @@ namespace MyShop.Controllers
             return BadRequest();
         }
 
-        // DELETE api/<UsersController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+        //// DELETE api/<UsersController>/5
+        //[HttpDelete("{id}")]
+        //public void Delete(int id)
+        //{
+        //}
     }
 }

@@ -3,16 +3,21 @@ using Entities;
 using Zxcvbn;
 namespace Services;
 
-public class UserServices : IUserServices
+public class UserService : IUserService
 {
-    IUserRepository _userRepository;
-    public UserServices(IUserRepository userRepository)
+    IUsersRepository _userRepository;
+    public UserService(IUsersRepository userRepository)
     {
         _userRepository = userRepository;
     }
     public async Task<User> LoginUser(string userName, string password)
     {
         return await _userRepository.LoginUser(userName, password);
+    }
+
+    public async Task<User> GetById(int id)
+    {
+        return await _userRepository.GetById(id);
     }
 
     public async Task<User> RegisterUser(User user)

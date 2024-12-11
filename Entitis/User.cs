@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace MyShop.Models; 
+namespace Entities; 
 
 public partial class User
 {

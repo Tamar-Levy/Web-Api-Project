@@ -1,28 +1,22 @@
 ﻿using System.Runtime.InteropServices;
 using System.Text.Json;
-using Entities;
 using Microsoft.EntityFrameworkCore;
+using Entities;
 
 namespace Repositories;
-public class UserRepository : IUserRepository
+public class UsersRepository : IUsersRepository 
 {
     MyShop215736745Context _context;
 
-    public UserRepository(MyShop215736745Context context)
+    public UsersRepository(MyShop215736745Context context)
     {
         _context = context;
     }
 
-    //Get
-    public IEnumerable<string> Get()
-    {
-        return new string[] { };
-    }
-
     // GetById
-    public string GetById(int id)
+    public async Task<User> GetById(int id)
     {
-        return "";
+        return await _context.Users.FirstOrDefaultAsync(user => user.UserId == id);
     }
 
     //Login
