@@ -23,9 +23,9 @@ public class UsersRepository : IUsersRepository
     public async Task<User> LoginUser(string userName, string password)
     {
         User userFound= await _context.Users.FirstOrDefaultAsync(user => user.UserName == userName && user.Password == password);
-        if (userFound != null)
+       // if (userFound != null)
             return userFound;
-        return null;
+       // return null;
     }
 
     //Register
