@@ -41,7 +41,7 @@ namespace MyShop.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<User>> Register([FromBody] User user)
+        public async Task<ActionResult<User>> Register([FromBody] User user)// get userDto
         {
             User userRegister =await _userServices.RegisterUser(user);
             if (userRegister != null)
@@ -64,7 +64,7 @@ namespace MyShop.Controllers
 
         // PUT api/<UsersController>/5
         [HttpPut("{id}")]
-        public async Task<ActionResult<User>> Put(int id, [FromBody] User userToUpdate)
+        public async Task<ActionResult<User>> Put(int id, [FromBody] User userToUpdate)// get userDto, return userDto
         {
             User userUpdate =await _userServices.UpdateUser(id,userToUpdate);
             if (userUpdate != null)
