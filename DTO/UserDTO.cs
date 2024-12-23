@@ -1,4 +1,7 @@
 ﻿namespace DTO
 {
-    public record UserDTO(string UserName, string FirstName, string LastName, List<DateOnly?> OrdersOrderDate);
+    public record GetUserDTO(string UserName, string FirstName, string LastName, List<OrderDTO> Orders);
+
+    public record RegisterUserDTO(string UserName, string FirstName, string LastName,string Password);
+
 }

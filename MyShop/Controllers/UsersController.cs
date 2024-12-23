@@ -23,10 +23,10 @@ namespace MyShop.Controllers
 
         // GET api/<UsersController>/5
         [HttpGet("{id}")]
-        public async Task<UserDTO> Get(int id)
+        public async Task<GetUserDTO> Get(int id)
         {
             User user = await _userServices.GetById(id);
-            return _mapper.Map<User, UserDTO>(user);
+            return _mapper.Map<User, GetUserDTO>(user);
         }
 
         // POST api/<UsersController>
@@ -41,8 +41,9 @@ namespace MyShop.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<User>> Register([FromBody] User user)
+        public async Task<ActionResult<User>> Register([FromBody] RegisterUserDTO registerUserDTO)
         {
+            User user = _mapper.Map<RegisterUserDTO, User>(registerUserDTO);
             User userRegister =await _userServices.RegisterUser(user);
             if (userRegister != null)
             {
