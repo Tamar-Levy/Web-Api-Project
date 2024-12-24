@@ -32,11 +32,13 @@ namespace MyShop.Controllers
         // POST api/<UsersController>
         [HttpPost]
         [Route("login")]
-        public async Task<ActionResult<User>> Login([FromQuery] string userName , [FromQuery] string password)
+        public async Task<ActionResult<LoginUserDTO>> Login([FromQuery] string userName , [FromQuery] string password)
         {
             User user=await _userServices.LoginUser(userName, password);
-            if (user != null) { 
-                   return Ok(user);}
+            if (user != null)
+            { 
+                   return Ok(_mapper.Map<User, LoginUserDTO>(user));
+            }
              return BadRequest();
         }
 
@@ -51,7 +53,7 @@ namespace MyShop.Controllers
                 {
                     return NoContent();
                 }
-                return Ok(userRegister);
+                return Ok(_mapper.Map<User, GetUserDTO>(userRegister));
             }  
             return BadRequest();
         }
@@ -65,16 +67,17 @@ namespace MyShop.Controllers
 
         // PUT api/<UsersController>/5
         [HttpPut("{id}")]
-        public async Task<ActionResult<User>> Put(int id, [FromBody] User userToUpdate)
+        public async Task<ActionResult<User>> Put(int id, [FromBody] RegisterUserDTO userToUpdateDTO)
         {
-            User userUpdate =await _userServices.UpdateUser(id,userToUpdate);
+            User user = _mapper.Map<RegisterUserDTO, User>(userToUpdateDTO);
+            User userUpdate =await _userServices.UpdateUser(id, user);
             if (userUpdate != null)
             {
                 if (userUpdate.FirstName == "Weak password")
                 {
                     return NoContent();
                 }
-                return Ok(userUpdate);
+                return Ok(_mapper.Map<User, GetUserDTO>(userUpdate));
             }
             return BadRequest();
         }

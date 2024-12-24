@@ -1,7 +1,11 @@
-﻿namespace DTO
-{
-    public record GetUserDTO(string UserName, string FirstName, string LastName, List<OrderDTO> Orders);
+﻿using System.ComponentModel.DataAnnotations;
 
-    public record RegisterUserDTO(string UserName, string FirstName, string LastName,string Password);
+namespace DTO
+{
+    public record GetUserDTO([EmailAddress] string UserName,[StringLength(20, ErrorMessage = "Name can be beteen 2 till 20", MinimumLength = 2)] string FirstName, [StringLength(20, ErrorMessage = "Name can be beteen 2 till 20", MinimumLength = 2)] string LastName);
+
+    public record RegisterUserDTO([EmailAddress] string UserName, [StringLength(20, ErrorMessage = "Name can be beteen 2 till 20", MinimumLength = 2)] string FirstName, [StringLength(20, ErrorMessage = "Name can be beteen 2 till 20", MinimumLength = 2)] string LastName, string Password);
+
+    public record LoginUserDTO([EmailAddress] string UserName);
 
 }
