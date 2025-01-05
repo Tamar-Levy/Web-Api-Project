@@ -27,9 +27,7 @@ namespace Repositories
         public async Task<Category> GetById(int id)
         {
             Category categoryFound = await _context.Categories.FirstOrDefaultAsync(category => category.CategoryId == id);
-            if (categoryFound != null)
-                return categoryFound;
-            return null;
+            return categoryFound;
         }
     }
 }

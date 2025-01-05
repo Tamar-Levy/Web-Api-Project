@@ -30,6 +30,16 @@ ul {
     margin-left: 10px;
 }
 
+#filters-cards {
+    display: grid;
+    grid-template-columns: 95% ;
+}
+
+#PoductList {
+    grid-column: 1;
+    margin-right:2%;
+}
+
 .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     max-width: 300px;
@@ -39,11 +49,17 @@ ul {
     padding: 15px;
     float: left;
     height: 550px;
+    width: 250px;
     margin: 6px;
 }
 
 .img-w {
     height: 300px;
+    width: auto;
+}
+
+.product-img{
+    max-height: 250px;
 }
 
 p.description {
@@ -51,7 +67,7 @@ p.description {
 }
 
 .bar::before {
-    content: 'חנות הצעצועים שלי';
+    content: 'חנות ה-כ-ל שלי';
     color: white;
     /* display: inline-block; */
     position: absolute;
@@ -79,9 +95,10 @@ p.description {
     font-size: 18px;
 }
 
-    .card button:hover {
-        opacity: 0.7;
-    }
+.card button:hover {
+    opacity: 0.7;
+
+}
 
 .bar {
     background-color: black;
@@ -104,13 +121,13 @@ p.description {
     height: 16px;
 }
 
-    .BagSummary .Icon .ItemCount span {
-        text-align: center;
-        width: 100%;
-        display: block;
-        font-size: 100%;
-        margin-top: -1px;
-    }
+.BagSummary .Icon .ItemCount span {
+    text-align: center;
+    width: 100%;
+    display: block;
+    font-size: 100%;
+    margin-top: -1px;
+}
 
 .goToCart {
     background: #1a6461;
@@ -161,6 +178,7 @@ p.description {
 
 
 .Filters {
+    grid-column: 2;
     position: absolute;
     width: 184px;
     float: right;
@@ -183,8 +201,6 @@ p.description {
 .filterBreak {
     padding-top: 10vh;
 }
-
-
 
 .priceInputText {
     background-color: #fff;

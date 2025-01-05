@@ -1,5 +1,5 @@
 ﻿const title = document.querySelector("#title")
-title.textContent = `${JSON.parse(sessionStorage.getItem('user')).firstName} you logged successfully!`
+title.textContent = `${JSON.parse(sessionStorage.getItem('user')).firstName} ${JSON.parse(sessionStorage.getItem('user')).lastName} you logged successfully!`
 
 const toUpdate = () => {
     const update = document.querySelector("#update");
