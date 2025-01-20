@@ -19,13 +19,10 @@
     <div class="cart">
         <div id="title">
             <h1> סל קניות </h1>
-            <p>
-                הסל שלך מכיל <span id="itemCount"></span> פריטים ומגיע לסך של <span id="totalAmount"></span>.
-            </p>
-            <a class="nxbtn primary GoToCheckout TopLink checkout_transfer"  href="#" onclick="placeOrder(); return false;">לביצוע ההזמנה</a> <a class="shopmore" href="Products.html?fromShoppingBag=1">המשך בקניה</a> <div class="ClearBoth"></div>
+            <a class="nxbtn primary GoToCheckout TopLink checkout_transfer" href="#" onclick="placeOrder(); return false;">לביצוע ההזמנה</a> <a class="shopmore" href="Products.html?fromShoppingBag=1">המשך בקניה</a> <div class="ClearBoth"></div>
         </div>
         <div class="cistGroup">
-            <table id="items" class="items">
+            <table >
                 <thead>
                     <tr>
                         <th class="itemsColumn" colspan="2">פריטים</th>
@@ -33,10 +30,13 @@
                         <th class="totalColumn">סכום ההזמנה</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="items">
                 </tbody>
             </table>
         </div>
+        <p>
+            הסל שלך מכיל <span id="itemCount"></span> פריטים ומגיע לסך של <span id="totalAmount"></span>.
+        </p>
     </div>
 </body>
 </html>

@@ -21,7 +21,7 @@ const userLogIn = async () => {
             const data = await responsePost.json();
             alert(`${data.userName} logged in`);
             sessionStorage.setItem('user', JSON.stringify(data))
-            window.location.href="./update.html"
+            window.location.href="./shoppingBag.html"
             }
     }
     catch (error) {
