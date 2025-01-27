@@ -8,12 +8,12 @@ const productList = addEventListener("load", async () => {
 })
 
 let urlString = "api/Products";
-const drawProducts = async () => {
+const drawProducts = async () => {//this function is get and needs to be called getProducts, you can have another func for draw.
     try {
         console.log(urlString)
         const getProducts = await fetch(urlString);
         const products = await getProducts.json()
-        products.map(p => showOneProduct(p))
+        products.map(p => showOneProduct(p))//use forEach instead of map
     }
     catch (error) {
         throw error;
@@ -33,11 +33,11 @@ const showOneProduct = async (product) => {
 }
 
 //categories
-const drawCategories = async () => {
+const drawCategories = async () => {//this function is get and needs to be called getCategories, you can have another func for draw.
     try {
         const getCategories = await fetch(`api/Categories`);
         const categories = await getCategories.json()
-        categories.map(c => showOneCategory(c))
+        categories.map(c => showOneCategory(c))//use forEach instead of map
     }
     catch (error) {
         throw error;
@@ -62,7 +62,7 @@ const filterProductsByCategory = async (id) => {
     if (index != -1)
         selectedCategoryIds.splice(index, 1);
     else
-        selectedCategoryIds[selectedCategoryIds.length] = id;
+        selectedCategoryIds[selectedCategoryIds.length] = id;//push
     filterProducts()
 }
 
@@ -75,7 +75,7 @@ const getFilterInputs = () => {
     return { minPrice, maxPrice, nameSearch };
 }
 
-const filterProducts = () =>
+const filterProducts = () =>//call it buildUrl or something like that...
 {
     urlString = "api/Products";
     const { minPrice, maxPrice, nameSearch } = getFilterInputs();

@@ -8,7 +8,7 @@ const drawProducts = () => {
     let itemCount = document.getElementById("itemCount")
     itemCount.textContent = shoppingBag.length;
     let totalSum = 0;
-    for (let i = 0; i < shoppingBag.length; i++)
+    for (let i = 0; i < shoppingBag.length; i++)//forEach
         totalSum += shoppingBag[i].price
     let totalAmount = document.getElementById("totalAmount")
     totalAmount.textContent = totalSum;
