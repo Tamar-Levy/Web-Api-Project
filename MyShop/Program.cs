@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using MyShop;
+using NLog.Web;
 using Repositories;
 using Services;
 
@@ -39,6 +40,8 @@ builder.Services.AddTransient<IRatingService, RatingService>();
 
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+builder.Host.UseNLog();
 
 builder.Services.AddEndpointsApiExplorer();
 

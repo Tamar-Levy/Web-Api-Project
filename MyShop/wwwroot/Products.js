@@ -3,17 +3,17 @@ const productList = addEventListener("load", async () => {
     const shoppingBag = JSON.parse(sessionStorage.getItem("shoppingBag")) || []
     let itemsCountText = document.getElementById("ItemsCountText");
     itemsCountText.textContent = shoppingBag.length;
-    drawProducts()
-    drawCategories();
+    getProducts()
+    getCategories();
 })
 
 let urlString = "api/Products";
-const drawProducts = async () => {
+const getProducts = async () => {
     try {
         console.log(urlString)
         const getProducts = await fetch(urlString);
         const products = await getProducts.json()
-        products.map(p => showOneProduct(p))
+        products.forEach(p => showOneProduct(p));
     }
     catch (error) {
         throw error;
@@ -33,11 +33,11 @@ const showOneProduct = async (product) => {
 }
 
 //categories
-const drawCategories = async () => {
+const getCategories= async () => {
     try {
         const getCategories = await fetch(`api/Categories`);
         const categories = await getCategories.json()
-        categories.map(c => showOneCategory(c))
+        categories.forEach(c => showOneCategory(c));
     }
     catch (error) {
         throw error;
@@ -62,8 +62,8 @@ const filterProductsByCategory = async (id) => {
     if (index != -1)
         selectedCategoryIds.splice(index, 1);
     else
-        selectedCategoryIds[selectedCategoryIds.length] = id;
-    filterProducts()
+        selectedCategoryIds.push(id);
+    buildUrl()
 }
 
 //filter
@@ -75,7 +75,7 @@ const getFilterInputs = () => {
     return { minPrice, maxPrice, nameSearch };
 }
 
-const filterProducts = () =>
+const buildUrl= () =>
 {
     urlString = "api/Products";
     const { minPrice, maxPrice, nameSearch } = getFilterInputs();
@@ -91,7 +91,7 @@ const filterProducts = () =>
             selectedCategoryIds.map(c => urlString += `&categoriesId=${c}`)
         }
     }
-    drawProducts()
+    getProducts()
 }
 
 //Add To Cart

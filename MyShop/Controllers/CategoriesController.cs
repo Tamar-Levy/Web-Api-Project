@@ -15,17 +15,20 @@ namespace MyShop.Controllers
     {
         ICategoriesService _categoryService;
         IMapper _mapper;
+        ILogger<CategoriesController> _logger;
 
-        public CategoriesController(ICategoriesService categoryService, IMapper mapper)
+        public CategoriesController(ICategoriesService categoryService, IMapper mapper, ILogger<CategoriesController> logger)
         {
             _categoryService = categoryService;
             _mapper = mapper;
+            _logger = logger;
         }
 
         // GET: api/<UsersController>
         [HttpGet]
         public async Task<IEnumerable<CategoryDTO>> Get()
         {
+            //_logger.LogError("\nFrom Category\n");
             IEnumerable<Category> categories = await _categoryService.GetCategories();
             return _mapper.Map<IEnumerable<Category>, IEnumerable<CategoryDTO>>(categories);
         }

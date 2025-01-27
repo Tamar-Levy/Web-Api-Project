@@ -14,7 +14,6 @@ namespace MyShop.Controllers
     {
         IUserService _userServices;
         IMapper _mapper;
-
         public UsersController(IUserService userServices, IMapper mapper)
         {
             _userServices = userServices;
