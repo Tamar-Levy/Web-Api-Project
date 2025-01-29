@@ -57,7 +57,7 @@ if(app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseRaitngMiddleware();
+app.UseRatingMiddleware();
 
 app.UseHttpsRedirection();
 
