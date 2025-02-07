@@ -25,7 +25,7 @@ public class UserService : IUserService
         var result = CheckPassword(user.Password);
         if (result< 2)
         {
-            User tmpUser = new();
+            User tmpUser = new();//don't love this
             tmpUser.FirstName = "Weak password";
             return tmpUser;
         }
