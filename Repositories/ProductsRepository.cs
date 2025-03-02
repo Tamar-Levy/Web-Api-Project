@@ -18,7 +18,7 @@ namespace Repositories
         }
 
         //Get
-        public async Task<IEnumerable<Product>> Get(int position, int skip, string? name, int? minPrice, int? maxPrice, int?[] categoriesId)
+        public async Task<IEnumerable<Product>> Get(int? position, int? skip, string? name, int? minPrice, int? maxPrice, int?[] categoriesId)
         {
             var query = _context.Products.Include(p => p.Category).Where(product =>
             (name == null ? (true) : (product.ProductName.Contains(name)))

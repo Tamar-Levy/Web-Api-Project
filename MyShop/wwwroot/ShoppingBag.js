@@ -75,9 +75,12 @@ const placeOrder = async () => {
             });
             if (!responsePost.ok)
                 alert("Error, Please try again")
-            //const data = await responsePost.json();
             else
-                alert(`Order created successfully!`);
+            { 
+                const data = await responsePost.json();
+                console.log(data)
+                alert(`Order ${data.orderId} was placed successfully`);
+            }
         }
         catch (error) {
             throw error;

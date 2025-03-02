@@ -52,12 +52,17 @@ const createUser = async () => {
             },
             body: JSON.stringify(user)
         });
-        if (responsePost.status === 204)
-            alert("Weak password")
-        if (!responsePost.ok)
-            alert("Error, Please try again")
         const data = await responsePost.json();
-            alert(`${data.userName} created`);
+        console.log(data)
+        if (!responsePost.ok)
+        {
+            if (responsePost.status === 400)
+                alert(data.title)
+            else
+                alert(data.message || "Error, Please try again");
+            return; 
+        }
+        alert(`${data.userName} created`);
     }
     catch (error){
         throw error;
@@ -77,7 +82,6 @@ const checkPassword = async () => {
         });
         const data = await response.json();
         score.value = data;
-        console.log(score.value);
     }
     catch (error) {
         throw error;

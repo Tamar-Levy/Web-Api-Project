@@ -15,13 +15,11 @@ namespace MyShop.Controllers
     {
         ICategoriesService _categoryService;
         IMapper _mapper;
-        ILogger<CategoriesController> _logger;
 
         public CategoriesController(ICategoriesService categoryService, IMapper mapper, ILogger<CategoriesController> logger)
         {
             _categoryService = categoryService;
             _mapper = mapper;
-            _logger = logger;
         }
 
         // GET: api/<UsersController>
