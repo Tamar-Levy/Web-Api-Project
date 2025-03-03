@@ -10,7 +10,7 @@ namespace Repositories
 {
     public class CategoriesRepository : ICategoriesRepository
     {
-        MyShop215736745Context _context;
+        MyShop215736745Context _context;//
 
         public CategoriesRepository(MyShop215736745Context context)
         {
