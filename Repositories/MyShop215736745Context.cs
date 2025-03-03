@@ -8,20 +8,9 @@ namespace Repositories;
 
 public partial class MyShop215736745Context : DbContext
 {
-    private readonly IConfiguration _configuration;
-
-    //public MyShop215736745Context(IConfiguration configuration)
-    //{
-    //    _configuration = configuration;
-    //}
     public MyShop215736745Context(DbContextOptions<MyShop215736745Context> options) : base(options)
     {
     }
-    //public MyShop215736745Context(DbContextOptions<MyShop215736745Context> options, IConfiguration configuration)
-    //    : base(options)
-    //{
-    //    _configuration = configuration;
-    //}
 
     public virtual DbSet<Category> Categories { get; set; }
 
@@ -35,13 +24,9 @@ public partial class MyShop215736745Context : DbContext
 
     public virtual DbSet<Rating> Ratings { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer("Server=DESKTOP-E0FAPSB\\SQLEXPRESS;Database=MyShop_215736745;Trusted_Connection=True;TrustServerCertificate=True");
-    //{
-    //        var connectionString = _configuration.GetConnectionString("Home");
-    //        optionsBuilder.UseSqlServer(connectionString);
-    //}
-
+    //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    //    => optionsBuilder.UseSqlServer("Server=srv2\\pupils;Database=MyShop_215736745;Trusted_Connection=True;TrustServerCertificate=True");
+ 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Category>(entity =>

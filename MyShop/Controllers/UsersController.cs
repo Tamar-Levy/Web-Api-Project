@@ -76,23 +76,19 @@ namespace MyShop.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult<User>> Put(int id, [FromBody] RegisterUserDTO userToUpdateDTO)
         {
+            try { 
             User user = _mapper.Map<RegisterUserDTO, User>(userToUpdateDTO);
             User userUpdate =await _userServices.UpdateUser(id, user);
             if (userUpdate != null)
             {
-                if (userUpdate.FirstName == "Weak password")
-                {
-                    return NoContent();
-                }
                 return Ok(_mapper.Map<User, GetUserDTO>(userUpdate));
             }
             return BadRequest();
+            }
+             catch (Exception ex)
+            {
+                return Conflict(new { message = "Weak password" });
+            }
         }
-
-        //// DELETE api/<UsersController>/5
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
     }
 }
