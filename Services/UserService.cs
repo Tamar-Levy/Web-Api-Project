@@ -22,12 +22,10 @@ public class UserService : IUserService
 
     public async Task<User> RegisterUser(User user)
     {
-        var result = CheckPassword(user.Password);
-        if (result< 2)
+        var checkPasswordResult = CheckPassword(user.Password);
+        if (checkPasswordResult < 2)
         {
-            User tmpUser = new();
-            tmpUser.FirstName = "Weak password";
-            return tmpUser;
+            throw new Exception("Weak password");
         }
         return await _userRepository.Register(user);
     }

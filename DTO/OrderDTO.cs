@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    public record OrderDTO(DateOnly OrderDate, [Range(00.01, double.MaxValue, ErrorMessage = "המחיר חייב להיות לפחות 1")] int OrderSum, string UserUserName);
+    public record OrderDTO(int OrderId, DateOnly OrderDate, [Range(00.01, double.MaxValue, ErrorMessage = "המחיר חייב להיות לפחות 1")] int OrderSum, string UserUserName);
 
     public record OrderItemDTO(int ProductId, int Quantity);
 
