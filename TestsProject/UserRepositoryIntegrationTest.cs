@@ -11,7 +11,7 @@ namespace TestsProject
     public class UserRepositoryIntegrationTest
     {
         private readonly DBFixture _dbFixture;
-
+        
         public UserRepositoryIntegrationTest()
         {
             _dbFixture = new ();
