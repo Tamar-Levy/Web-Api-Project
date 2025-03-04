@@ -13,10 +13,8 @@ const userLogIn = async () => {
                 'Content-Type': 'application/json'
             }
         });
-        if (responsePost.status == 204)
+        if (!responsePost.ok)
             alert("User Not Found!")
-        else if (!responsePost.ok)
-            alert("Error, Please try again")
         else {
             const data = await responsePost.json();
             alert(`${data.userName} logged in`);
@@ -39,11 +37,19 @@ const getRegisterDataFromForm = () => {
     const password = document.querySelector("#password").value;
     const firstName = document.querySelector("#firstName").value;
     const lastName = document.querySelector("#lastName").value;
-    return { userName, password, firstName, lastName };
+
+    const user = { userName, password, firstName, lastName };
+    if (!validateUser(user)) {
+        return;
+    }
+    return user;
 }
 
 const createUser = async () => {
+
     const user = getRegisterDataFromForm();
+    if (!user)
+        return;
     try {
         const responsePost = await fetch('api/users', {
             method: 'POST',
@@ -67,6 +73,26 @@ const createUser = async () => {
     catch (error){
         throw error;
     }
+}
+
+ function validateUser(user) {
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(user.userName)) {
+        alert("Invalid email address");
+        return false;
+    }
+
+    if (user.firstName.length < 2 || user.firstName.length > 20) {
+        alert("First Name can be between 2 to 20 characters");
+        return false;
+    }
+
+    if (user.lastName.length < 2 || user.lastName.length > 20) {
+        alert("Last Name can be between 2 to 20 characters");
+        return false;
+    }
+
+    return true;
 }
 
 const checkPassword = async () => {

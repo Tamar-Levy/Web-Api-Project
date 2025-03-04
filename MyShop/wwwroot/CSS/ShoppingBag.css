@@ -53,8 +53,8 @@ td {
     font-family: 'azo-sans', sans-serif;
 }
 .imageColumn .image {
-    width: 66px;
-    height: 99px;
+    width: 100px;
+    /*background-image:url('../Images/Products/Hot Drinks/1.jpg');*/
     background-repeat: no-repeat;
     background-size: contain;
     background-position: right center;

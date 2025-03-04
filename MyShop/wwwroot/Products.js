@@ -24,9 +24,9 @@ const showOneProduct = async (product) => {
     let tmp = document.getElementById("temp-card");
     let cloneProduct = tmp.content.cloneNode(true)
     if (product.image)
-        cloneProduct.querySelector("img").src = `./Images/Products/${product.categoryCategoryName}/${product.image}`
-    cloneProduct.querySelector("h1").textContent = product.name
-    cloneProduct.querySelector(".price").innerText = product.price
+        cloneProduct.querySelector("img").src = `/Images/Products/${product.categoryCategoryName}/${product.image}`
+    cloneProduct.querySelector(".name").textContent = product.productName
+    cloneProduct.querySelector(".price").innerText = product.price + " ₪" 
     cloneProduct.querySelector(".description").innerText = product.description
     cloneProduct.querySelector("button").addEventListener('click', () => { addToCart(product) })
     document.getElementById("PoductList").appendChild(cloneProduct)

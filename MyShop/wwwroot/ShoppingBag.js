@@ -17,8 +17,11 @@ const showOneProduct = (product) => {
     let tmp = document.getElementById("temp-row");
     let cloneProduct = tmp.content.cloneNode(true)
     if (product.image) {
-        const url = `../Images/Products/${product.categoryCategoryName}/${product.image}`
-        cloneProduct.querySelector('.image').style.backgroundImage = `url(${url})`
+        cloneProduct.querySelector(".image").src = `/Images/Products/${product.categoryCategoryName}/${product.image}`
+        //const url = `../Images/Products/${product.categoryCategoryName}/${product.image}`
+        //console.log(url)
+        //cloneProduct.querySelector('.image').style.backgroundImage = `url(${url})`
+        /*background-image:url("/Images/Products/Hot Drinks/1.jpg");*/
     }
     cloneProduct.querySelector(".price").innerText = product.price + " ₪"  
     cloneProduct.querySelector(".itemName").innerText = product.productName
@@ -36,11 +39,9 @@ const deleteFromCart = (product) => {
 
 const sumQuantities = () => {
     return Object.values(shoppingBag.reduce((totalQuantities, product) => {
-        // אם המוצר כבר קיים במערך הסיכום, הוסף את הכמות
         if (totalQuantities[product.productId]) {
             totalQuantities[product.productId].quantity += 1;
         } else {
-            // אם המוצר לא קיים במערך, הוסף אותו עם הכמות הראשונה
             totalQuantities[product.productId] = {
                 productId: product.productId,
                 quantity: 1
@@ -79,7 +80,7 @@ const placeOrder = async () => {
             { 
                 const data = await responsePost.json();
                 console.log(data)
-                sessionStorage.setItem('shoppingBag', undefined)
+                sessionStorage.clear();
                 alert(`Order ${data.orderId} was placed successfully`);
                 window.location.href = "./products.html"
             }

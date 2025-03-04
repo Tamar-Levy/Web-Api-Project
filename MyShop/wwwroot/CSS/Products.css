@@ -37,11 +37,12 @@ ul {
 
 #filters-cards {
     display: grid;
-    grid-template-columns: 95% ;
+    grid-template-columns: 100% ;
 }
 
 #PoductList {
     grid-column: 1;
+    width:90%;
     margin-right:2%;
 }
 
