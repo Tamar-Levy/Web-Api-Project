@@ -34,6 +34,8 @@ Global Error Handling (Middleware): Errors are logged and fatal errors are sent 
 
 Request Logging: Every request is logged for analytics and rating purposes.
 
+Caching of api requests.
+
 Database Setup
 To set up the database, use the following commands:
 
