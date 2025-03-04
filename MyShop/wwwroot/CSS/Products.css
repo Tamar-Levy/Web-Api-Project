@@ -75,7 +75,7 @@ p.description {
 }
 
 .bar::before {
-    content: 'חנות ה-כ-ל שלי';
+    content: 'חנות הגלידות שלי';
     color: white;
     /* display: inline-block; */
     position: absolute;

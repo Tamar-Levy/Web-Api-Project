@@ -38,7 +38,7 @@ namespace Services
             return await _ordersRepository.AddOrder(order);
         }
 
-        private async Task<int?> CheckOrderSum(ICollection<OrderItem> products)
+        public async Task<int?> CheckOrderSum(ICollection<OrderItem> products)
         {
             int? totalSum = 0;
             var productIds = products.Select(p => p.ProductId).ToList();
