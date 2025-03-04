@@ -4,32 +4,33 @@
     <meta charset="utf-8" />
     <title>Home</title>
     <script defer src="Home.js"></script>
+    <link href="./CSS/Home.css" rel="stylesheet" />
 </head>
 <body>
-    <a href="Products.html">מעבר למוצרים</a>
-    <div>
+    <a href="Products.html" id="products-link">מעבר למוצרים</a>
+    <div id="login-box">
         <h2>Log in</h2>
-        <input type="email" placeholder="User Email" id="loginUserName" />
+        <input class="input-feild" type="email" placeholder="User Email" id="loginUserName" />
         <br />
-        <input type="password" placeholder="Password" id="loginPassword" />
+        <input class="input-feild" type="password" placeholder="Password" id="loginPassword" />
         <br />
-        <button onclick="userLogIn()">Log in</button>
-        <button onclick="toRegister()">New User</button>
+        <button class="btn" onclick="toRegister()">New User</button>
+        <button class="btn" onclick="userLogIn()">Log in</button>
     </div>
 
     <div style="visibility:hidden" id="register">
         <h2>Register</h2>
-        <input type="email" placeholder="User Email" id="userName" />
+        <input class="input-feild" type="email" placeholder="User Email" id="userName" />
         <br />
-        <input onblur="checkPassword()" type="password" placeholder="Password" id="password" />
+        <input class="input-feild" onblur="checkPassword()" type="password" placeholder="Password" id="password" />
         <br />
         <progress id="score" value="0" max="5"></progress>
         <br />
-        <input type="text" placeholder="First Name" id="firstName" />
+        <input class="input-feild" type="text" placeholder="First Name" id="firstName" />
         <br />
-        <input type="text" placeholder="Last Name" id="lastName" />
+        <input class="input-feild" type="text" placeholder="Last Name" id="lastName" />
         <br />
-        <button onclick="createUser()">Register</button>
+        <button class="btn" onclick="createUser()">Register</button>
     </div>
 </body>
 </html>

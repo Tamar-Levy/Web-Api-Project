@@ -4,24 +4,27 @@
     <meta charset="utf-8" />
     <title>Update</title>
     <script defer src="Update.js"></script>
+    <link href="./CSS/Update.css" rel="stylesheet" />
 </head>
 <body>
-    <a href="Products.html">מעבר למוצרים</a>
-    <h1 id="title"></h1>
-    <button onclick="toUpdate()">Update Details</button>
-    <div id="update" style="visibility:hidden">
-        <h2>Update</h2>
-        <input type="email" placeholder="User Email" id="userName" />
-        <br />
-        <input onblur="checkPassword()" type="password" placeholder="Password" id="password" />
-        <br />
-        <progress id="score" value="0" max="5"></progress>
-        <br />
-        <input type="text" placeholder="First Name" id="firstName" />
-        <br />
-        <input type="text" placeholder="Last Name" id="lastName" />
-        <br />
-        <button onclick="updateUser()">Update</button>
-    </div>
+    <a href="Products.html" id="products-link">מעבר למוצרים</a>
+    <span id="container">
+        <h1 id="title"></h1>
+        <button class="btn" onclick="toUpdate()">Update Details</button>
+        <div id="update" style="visibility:hidden">
+            <h2>Update</h2>
+            <input class="input-field" type="email" placeholder="User Email" id="userName" />
+            <br />
+            <input class="input-field" onblur="checkPassword()" type="password" placeholder="Password" id="password" />
+            <br />
+            <progress id="score" value="0" max="5"></progress>
+            <br />
+            <input class="input-field" type="text" placeholder="First Name" id="firstName" />
+            <br />
+            <input class="input-field" type="text" placeholder="Last Name" id="lastName" />
+            <br />
+            <button class="btn" onclick="updateUser()">Update</button>
+        </div>
+    </span>
 </body>
 </html>

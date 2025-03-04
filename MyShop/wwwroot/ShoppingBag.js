@@ -17,7 +17,7 @@ const showOneProduct = (product) => {
     let tmp = document.getElementById("temp-row");
     let cloneProduct = tmp.content.cloneNode(true)
     if (product.image) {
-        const url = `../Images/Products/${product.categoryCategoryName}/${product.image}.png`
+        const url = `../Images/Products/${product.categoryCategoryName}/${product.image}`
         cloneProduct.querySelector('.image').style.backgroundImage = `url(${url})`
     }
     cloneProduct.querySelector(".price").innerText = product.price + " ₪"  
@@ -79,7 +79,9 @@ const placeOrder = async () => {
             { 
                 const data = await responsePost.json();
                 console.log(data)
+                sessionStorage.setItem('shoppingBag', undefined)
                 alert(`Order ${data.orderId} was placed successfully`);
+                window.location.href = "./products.html"
             }
         }
         catch (error) {
