@@ -4,6 +4,7 @@ using Entities;
 using Services;
 using DTO;
 using AutoMapper;
+using Microsoft.Extensions.Logging;
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace MyShop.Controllers
@@ -14,10 +15,13 @@ namespace MyShop.Controllers
     {
         IUserService _userServices;
         IMapper _mapper;
-        public UsersController(IUserService userServices, IMapper mapper)
+        ILogger<UsersController> _logger;
+
+        public UsersController(IUserService userServices, IMapper mapper, ILogger<UsersController> logger)
         {
             _userServices = userServices;
             _mapper = mapper;
+            _logger = logger;
         }
 
         // GET api/<UsersController>/5
@@ -35,8 +39,9 @@ namespace MyShop.Controllers
         {
             User user=await _userServices.LoginUser(userName, password);
             if (user != null)
-            { 
-                   return Ok(_mapper.Map<User, GetUserDTO>(user));
+            {
+                _logger.LogInformation($"User name: {user.UserName} Name: {user.FirstName} {user.LastName}");
+                return Ok(_mapper.Map<User, GetUserDTO>(user));
             }
              return BadRequest();
         }
@@ -44,17 +49,20 @@ namespace MyShop.Controllers
         [HttpPost]
         public async Task<ActionResult<User>> Register([FromBody] RegisterUserDTO registerUserDTO)
         {
-            User user = _mapper.Map<RegisterUserDTO, User>(registerUserDTO);
-            User userRegister =await _userServices.RegisterUser(user);
-            if (userRegister != null)
+            try
             {
-                if(userRegister.FirstName== "Weak password")
+                User user = _mapper.Map<RegisterUserDTO, User>(registerUserDTO);
+                User userRegister = await _userServices.RegisterUser(user);
+                if (userRegister != null)
                 {
-                    return NoContent();
+                    return Ok(_mapper.Map<User, GetUserDTO>(userRegister));
                 }
-                return Ok(_mapper.Map<User, GetUserDTO>(userRegister));
-            }  
-            return BadRequest();
+                return BadRequest();
+            }
+            catch (Exception ex)
+            {
+                return Conflict(new { message = "Weak password" });
+            }
         }
 
         [HttpPost]
@@ -68,23 +76,19 @@ namespace MyShop.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult<User>> Put(int id, [FromBody] RegisterUserDTO userToUpdateDTO)
         {
+            try { 
             User user = _mapper.Map<RegisterUserDTO, User>(userToUpdateDTO);
             User userUpdate =await _userServices.UpdateUser(id, user);
             if (userUpdate != null)
             {
-                if (userUpdate.FirstName == "Weak password")
-                {
-                    return NoContent();
-                }
                 return Ok(_mapper.Map<User, GetUserDTO>(userUpdate));
             }
             return BadRequest();
+            }
+             catch (Exception ex)
+            {
+                return Conflict(new { message = "Weak password" });
+            }
         }
-
-        //// DELETE api/<UsersController>/5
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
     }
 }

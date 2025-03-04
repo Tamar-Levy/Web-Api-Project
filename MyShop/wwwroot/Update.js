@@ -24,16 +24,16 @@ const updateUser = async () => {
             },
             body: JSON.stringify(user)
         });
-        if (responsePost.status === 204)
-            alert("Weak password")
-        if (responsePost.status == 400) {
-            alert("User not found!")
-        }
-        else if (!responsePost.ok) {
-            alert("Error, please try again")
+        const data = await responsePost.json();
+        console.log(data)
+        if (!responsePost.ok) {
+            if (responsePost.status === 400)
+                alert(data.title)
+            else
+                alert(data.message || "Error, Please try again");
+            return;
         }
         else {
-            const data = await responsePost.json();
             sessionStorage.setItem('user', JSON.stringify(data))
             alert(`${data.userName} updated`);
         }

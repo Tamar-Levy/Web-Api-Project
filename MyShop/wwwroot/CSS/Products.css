@@ -2,6 +2,11 @@
     direction: rtl;
     margin: 0;
     padding: 0;
+    background-color: rgb(190, 173, 163);
+    /*    background-image:url("/Images/Products/Electronics/125.png");
+    background-repeat:no-repeat;
+    background-position:center;
+    background-size:cover;*/
 }
 
 * {
@@ -41,6 +46,7 @@ ul {
 }
 
 .card {
+    background-color: rgba(255, 255, 255, 0.5);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     max-width: 300px;
     margin: auto;
@@ -55,11 +61,13 @@ ul {
 
 .img-w {
     height: 300px;
-    width: auto;
+/*    width: auto;*/
 }
 
 .product-img{
     max-height: 250px;
+    width:auto;
+    border-radius:5%;
 }
 
 p.description {
@@ -187,7 +195,8 @@ p.description {
     padding-bottom: 10px;
     position: absolute;
     z-index: 102;
-    background-color: rgb(249, 249, 249);
+    background-color: rgba(255, 255, 255, 0.5);
+    /*    background-color: rgb(249, 249, 249);*/
     font-family: Arial;
     font-size: 14px;
     min-height: 100%;
