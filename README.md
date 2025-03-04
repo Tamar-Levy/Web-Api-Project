@@ -36,6 +36,8 @@ Request Logging: Every request is logged for analytics and rating purposes.
 
 Caching of api requests.
 
+Unit tests and integration tests. 
+
 Database Setup
 To set up the database, use the following commands:
 
