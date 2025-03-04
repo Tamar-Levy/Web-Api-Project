@@ -12,6 +12,11 @@ public partial class MyShop215736745Context : DbContext
     {
     }
 
+    // Parameterless constructor needed for mocking
+    public MyShop215736745Context()
+    {
+    }
+
     public virtual DbSet<Category> Categories { get; set; }
 
     public virtual DbSet<Order> Orders { get; set; }

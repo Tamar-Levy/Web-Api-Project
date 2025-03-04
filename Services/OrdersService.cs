@@ -15,9 +15,9 @@ namespace Services
 
         IOrdersRepository _ordersRepository;
         IProductsRepository _productsRepository;
-        ILogger<OrdersRepository> _logger;
+        ILogger<OrdersService> _logger;
 
-        public OrdersService(IOrdersRepository ordersRepository, ILogger<OrdersRepository> logger, IProductsRepository productsRepository)
+        public OrdersService(IOrdersRepository ordersRepository, ILogger<OrdersService> logger, IProductsRepository productsRepository)
         {
             _ordersRepository = ordersRepository;
             _logger = logger;
@@ -43,8 +43,7 @@ namespace Services
             int? totalSum = 0;
             var productIds = products.Select(p => p.ProductId).ToList();
 
-            int?[] a = new int?[0];
-            IEnumerable<Product> productsFromDB = await _productsRepository.Get(null,null, null, null, null, a) ;
+            IEnumerable<Product> productsFromDB = await _productsRepository.Get(null,null, null, null, null, new int?[] { }) ;
 
             foreach (var product in productsFromDB)
             {
