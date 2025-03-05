@@ -64,9 +64,9 @@ Contribution
 If you want to contribute, feel free to submit a pull request!
 
 Contact
-Naama Shmuelevitz
-0583265557
-n0583265557@gmail.com
+Tamar Levy
+0583270331
+t0583270331@gmail.com
 
 License
 This project is open-source and licensed under the MIT License.
